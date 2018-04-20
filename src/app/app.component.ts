@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
     private targetAppId: number;
     private lastIncrementerMessage: string;
     private directMessage: string;
+    private incrementBy: string;
 
     constructor(private cd: ChangeDetectorRef) {}
 
@@ -25,7 +26,10 @@ export class AppComponent implements OnInit {
                 this.ticker = x;
                 this.cd.detectChanges();
             });
-            console.log('Connected to service');
+            this.serviceConnection.dispatch('getValue').then(x => {
+                this.ticker = x;
+                this.cd.detectChanges();
+            });
         });
         fin.desktop.InterApplicationBus.subscribe('*', 'direct-message', (m, u, a) => {
             console.log(m);
@@ -35,9 +39,16 @@ export class AppComponent implements OnInit {
     }
 
     increment() {
-        this.serviceConnection.dispatch('increment').then(x => {
-            this.lastIncrementerMessage = `I Incremented To ${x}`;
-        });
+        if (this.incrementBy) {
+            const amount = parseInt(this.incrementBy, 10);
+            this.serviceConnection.dispatch('incrementBy', { amount: amount }).then(x => {
+                this.lastIncrementerMessage = `I Incremented To ${x}`;
+            });
+        } else {
+            this.serviceConnection.dispatch('increment').then(x => {
+                this.lastIncrementerMessage = `I Incremented To ${x}`;
+            });
+        }
     }
 
     sendIAB() {
