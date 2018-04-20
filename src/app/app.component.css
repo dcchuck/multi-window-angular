@@ -1,0 +1,50 @@
+button {
+    display: block;
+    margin: auto;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+#ticker {
+    font-size: 30px;
+    margin: 10px 0 10px 0;
+}
+
+#iab {
+    background-color: #f15c5c;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: large;
+    border-radius: 5px;
+}
+
+#increment {
+    background-color: #b84a39;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: large;
+    border-radius: 5px;
+}
+
+input {
+    padding: 10px;
+    font-size: large;
+    margin: 10px 0 10px 0;
+    text-align: center;
+}
+
+#incinp {
+    margin-top: 40px;
+}
+
+#last {
+    margin-top: 15px;
+}
+
+#direct {
+    height: 20px;
+}

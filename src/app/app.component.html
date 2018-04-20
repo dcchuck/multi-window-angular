@@ -1,14 +1,14 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<div id='top-level'>
   <h1>
     {{ appName }}
   </h1>
+  <div id="direct">{{directMessage}}</div>
+  <div id="ticker">{{ticker}}</div> 
   <input [(ngModel)]="targetAppId" placeholder="targetAppId">
-  <button (click)="sendIAB()">Send To Other Window</button>
-  <div>{{ticker}}</div>
-  <input [(ngModel)]="incrementBy" placeholder="Increment By">
-  <button (click)="increment();">Increment</button>
-  <div>{{lastIncrementerMessage}}</div>
-  <div>{{directMessage}}</div>
+  <button (click)="sendIAB()" id="iab">Send To Other Window</button>
+  <input [(ngModel)]="incrementBy" placeholder="Increment By" id="incinp">
+  <button (click)="increment();" id="increment">Increment</button>
+  <div id="last">{{lastIncrementerMessage}}</div>
 </div>
 

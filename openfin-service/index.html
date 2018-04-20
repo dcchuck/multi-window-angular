@@ -5,24 +5,34 @@
         <title>Demo Controller</title>
         <style>
             body {
-                background-color: rebeccapurple;
-                color: white;
+                background-color: #011627;
+                color: #EFFFE9;
                 font-family: sans-serif;
             }
 
             h1 {
                 text-align: center;
+                margin-bottom: 40px;
             }
 
-            #service-message {
-                text-align: center;
-                margin-top: 15px;
+            button {
+                display: block;
+                margin: auto;
+                padding: 15px;
+                font-size: large;
+                border-radius: 8px;
+                border: none;
+                color: #EFFFE9;
+                background-color: #E71D36;
+            }
+
+            button:hover {
+                cursor: pointer;
             }
         </style>
     </head>
     <body>
         <h1>Demo Controller</h1>
-        <div id='service-message'></div>
         <button id='angular-creator'>Create Angular Window</button>
         <script>
             const serviceRenderProcess = new fin.desktop.Application({
@@ -30,7 +40,11 @@
                 uuid: 'service',
                 url: 'http://localhost:8080/service.html',
                 mainWindowOptions: {
-                    autoShow: true
+                    autoShow: true,
+                    saveWindowState: false,
+                    defaultHeight: 200,
+                    defaultWidth: 300,
+                    saveWindowState: false
                 }
             }, () => {
                 serviceRenderProcess.run();
@@ -46,7 +60,10 @@
                     url: 'http://localhost:4200',
                     uuid: `Angular-${x}`,
                     mainWindowOptions: {
-                        autoShow: true
+                        autoShow: true,
+                        saveWindowState: false,
+                        defaultHeight: 500,
+                        defaultWidth: 300
                     }
                 }, () => newApp.run());
             };
