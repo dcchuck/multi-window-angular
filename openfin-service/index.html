@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Demo Controller</title>
+        <style>
+            body {
+                background-color: rebeccapurple;
+                color: white;
+                font-family: sans-serif;
+            }
+
+            h1 {
+                text-align: center;
+            }
+
+            #service-message {
+                text-align: center;
+                margin-top: 15px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Demo Controller</h1>
+        <div id='service-message'></div>
+        <button id='angular-creator'>Create Angular Window</button>
+        <script>
+            const serviceRenderProcess = new fin.desktop.Application({
+                name: 'service',
+                uuid: 'service',
+                url: 'http://localhost:8080/service.html',
+                mainWindowOptions: {
+                    autoShow: true
+                }
+            }, () => {
+                serviceRenderProcess.run();
+            });
+            
+            let x = 0;
+
+            const agButton = document.getElementById('angular-creator');
+            agButton.onclick = () => {
+                x += 1;
+                const newApp = new fin.desktop.Application({
+                    name: `Angular-${x}`,
+                    url: 'http://localhost:4200',
+                    uuid: `Angular-${x}`,
+                    mainWindowOptions: {
+                        autoShow: true
+                    }
+                }, () => newApp.run());
+            };
+        </script>
+    </body>
+</html>
